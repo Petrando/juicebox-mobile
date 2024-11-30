@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
-import { Text, PlatformPressable } from '@react-navigation/elements';
+import { PlatformPressable } from '@react-navigation/elements';
 import { navIcons } from '../assets/navIcons';
 import { DoubleA, Reload } from "./Icons"
 
 function TabBar({ state, descriptors, navigation }) {    
     const [ active, setActive ] = useState(2)    
-    const linkTo = "juicebox.com.au"
+    const linkTo = "juicebox.com.au"    
+
     return (
         <View style={styles.tabBar}>
             <View style={styles.inputContainer}>
@@ -52,6 +53,7 @@ const styles = StyleSheet.create({
         bottom: 0,        
         backgroundColor: '#3D3D3D',
         width: '100dvw',
+        height: 140
     },
     inputContainer: {
         width: "100%",
@@ -80,7 +82,7 @@ const styles = StyleSheet.create({
         fontWeight: 400,
         fontSize: 16,
         //backgroundColor: 'rgba(255, 255, 255, 0.2)', font-family: SF Pro Text;
-        fontFamily: "SF Pro Text",
+        //fontFamily: "SF Pro Text",
         lineHeight: 19.09,
         letterSpacing: "-0.028em",
         textAlign: "center",
