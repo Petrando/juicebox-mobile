@@ -1,82 +1,106 @@
-import { View, StyleSheet } from 'react-native';
-import { useLinkBuilder, useTheme } from '@react-navigation/native';
+import { useState } from 'react';
+import { View, TextInput, StyleSheet } from 'react-native';
 import { Text, PlatformPressable } from '@react-navigation/elements';
+import { navIcons } from '../assets/navIcons';
+import { DoubleA, Reload } from "./Icons"
 
-function TabBar({ state, descriptors, navigation }) {
-    const { colors } = useTheme();
-    const { buildHref } = useLinkBuilder();
-
-    console.log(state.routes)
+function TabBar({ state, descriptors, navigation }) {    
+    const [ active, setActive ] = useState(2)    
+    const linkTo = "juicebox.com.au"
     return (
-        <View style={styles.tabbar}>
-        {state.routes.filter(d => !['_sitemap', '+not-found'].includes(d.name) ).map((route, index) => {
-            const { options } = descriptors[route.key];
-            const label =
-            options.tabBarLabel !== undefined
-                ? options.tabBarLabel
-                : options.title !== undefined
-                ? options.title
-                : route.name;
+        <View style={styles.tabBar}>
+            <View style={styles.inputContainer}>
+                <View style={styles.inputWithIcon}>
+                    <DoubleA />
+                        <TextInput style={styles.textInput} value={linkTo} />
+                    <Reload />
+                </View>
+            </View>
+            <View style={styles.tabNav}>
+                { [1, 2, 3, 4, 5].map((icon, index) => {            
 
-            const isFocused = state.index === index;
+                    const isFocused = icon === active;
 
-            const onPress = () => {
-            const event = navigation.emit({
-                type: 'tabPress',
-                target: route.key,
-                canPreventDefault: true,
-            });
+                    const onPress = () => {            
+                    setActive(icon)
+                    };
 
-            if (!isFocused && !event.defaultPrevented) {
-                navigation.navigate(route.name, route.params);
-            }
-            };
-
-            const onLongPress = () => {
-            navigation.emit({
-                type: 'tabLongPress',
-                target: route.key,
-            });
-            };
-
-            return (
-            <PlatformPressable
-                key={route.name}
-                href={buildHref(route.name, route.params)}
-                accessibilityState={isFocused ? { selected: true } : {}}
-                accessibilityLabel={options.tabBarAccessibilityLabel}
-                testID={options.tabBarButtonTestID}
-                onPress={onPress}
-                onLongPress={onLongPress}
-                style={{ flex: 1 }}
-            >
-                <Text style={{ color: isFocused ? colors.primary : colors.text, textAlign: 'center' }}>
-                {label}
-                </Text>
-            </PlatformPressable>
-            );
-        })}
+                    const onLongPress = () => {                
+                        setActive(icon)
+                    };
+                    
+                    return (
+                        <PlatformPressable
+                            key={icon}
+                            href={"#"}                    
+                            onPress={onPress}
+                            onLongPress={onLongPress}
+                            style={styles.tabItem}
+                        >
+                            {navIcons[icon]({active: isFocused})}                    
+                        </PlatformPressable>
+                    );
+                })}
+            </View>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
-    tabbar: {
+    tabBar: {
         position: 'absolute', 
-        bottom: 25,
+        bottom: 0,        
+        backgroundColor: '#3D3D3D',
+        width: '100dvw',
+    },
+    inputContainer: {
+        width: "100%",
+        paddingHorizontal: 30,
+        display: "flex",         
+        justifyContent: "center", 
+        alignItems: "center"
+    },
+    inputWithIcon:{
+        width: "100%",
+        marginTop: 8,
+        display: "flex",
+        flexDirection: "row", 
+        justifyContent: "center", 
+        alignItems: "center",
+        backgroundColor: 'rgba(255, 255, 255, 0.2)',
+        borderRadius: 12,
+        overflow: "hidden",
+        paddingLeft: 16.2,
+        paddingRight: 13.32
+    }, 
+    textInput: {
+        width: "100%",
+        height: 44,
+        borderRadius: 12,
+        fontWeight: 400,
+        fontSize: 16,
+        //backgroundColor: 'rgba(255, 255, 255, 0.2)', font-family: SF Pro Text;
+        fontFamily: "SF Pro Text",
+        lineHeight: 19.09,
+        letterSpacing: "-0.028em",
+        textAlign: "center",
+        color: "#FAFAFA"
+       
+        
+    }, 
+    tabNav: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        backgroundColor: 'white',
-        //marginHorizontal: 20,
-        paddingVertical: 15,
-        borderRadius: 25,
+        paddingTop: 16.69,
+        paddingBottom: 46.49,
         width: '100%',
-        borderCurve: 'continuous',
-        shadowColor: 'black',
-        shadowOffset: {width: 0, height: 10},
-        shadowRadius: 10,
-        shadowOpacity: 0.1
+    },
+    tabItem: {
+        flex: 1,
+        display: 'flex',
+        justifyContent: 'center', 
+        alignItems: 'center'
     }
 })
 
