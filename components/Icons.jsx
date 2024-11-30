@@ -1,5 +1,5 @@
-import * as React from "react"
-import Svg, { Defs, Stop, RadialGradient as SVGRadialGradient, Path } from "react-native-svg"
+import { View } from "react-native"
+import Svg, { Defs, Stop, RadialGradient as SVGRadialGradient, Path, Rect } from "react-native-svg"
 
 const inactiveCol = "#5794F7"
 const activeCol = "#707070"
@@ -123,32 +123,32 @@ export const JuiceboxTitle = (props) => (
 
 )
 
-export function RadialGradient() {
+export function RadialGradient({ width, height}) {    
     return (
-        <Svg
-            height="100%"
-            width="100%"
-            style={{
-                position: 'absolute',
-            }}
-        >
-            <Path
-                d="M0 0H375V279C375 283.418 371.418 287 367 287H8C3.58172 287 0 283.418 0 279V0Z"
-                fill="url(#grad)"
-            />
-            <Defs>
-                <SVGRadialGradient
-                    id="grad"
-                    cx="0"
-                    cy="0"
-                    r="1"
-                    gradientUnits="userSpaceOnUse"
-                    gradientTransform="translate(187.5 50.5) rotate(90) scale(180 350.061)"
-                >
-                    <Stop stopColor={'#222737'} />
-                    <Stop stopColor={'#0F0E26'} offset={1} />
-                </SVGRadialGradient>
-            </Defs>
-        </Svg>
+        <View style={{position: "absolute", width, height, left: 0, top: 0, display: "flex"}}>
+            <Svg
+                height="100%"
+                width="100%"
+                style={{
+                    flex: 1,
+                    backgroundColor: "red"
+                }}
+            >
+                <Rect width={"100%"} height={"100%"} fill="url(#grad)" />
+                <Defs>
+                    <SVGRadialGradient
+                        id="grad"
+                        cx={"0"}
+                        cy="0"
+                        r="1"
+                        gradientUnits="userSpaceOnUse"
+                        gradientTransform={`translate(187.5 ${height/2}) rotate(90) scale(180 180)`}
+                    >
+                        <Stop stopColor={'#222737'} />
+                        <Stop stopColor={'#0C0D10'} offset={1} />
+                    </SVGRadialGradient>
+                </Defs>
+            </Svg>
+        </View>
     )
 }
