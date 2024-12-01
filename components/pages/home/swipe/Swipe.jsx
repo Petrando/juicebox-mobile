@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { View, Text, TouchableOpacity, StyleSheet, Image, PanResponder } from 'react-native'
+import GestureRecognizer from 'react-native-swipe-gestures'
 const swipeLogo = require('../../../../assets/images/SwipeLogo.png')
 import SwipeButtons from './SwipeButtons'
 import { styles as homeStyles } from '../styles'
@@ -32,9 +33,24 @@ const Swipe = () => {
             'd a reality check about technology in a few minutes. Deal? Great!'
         ]
     ]
-
+   
     return(
-        <View style={homeStyles.content} onLayout={handleLayout} >
+        <GestureRecognizer           
+            onSwipeLeft={() => {
+                console.log('swipe left')
+                if( swipeIdx < 3 ){ setSwipeIdx(swipeIdx + 1) }
+            }}
+            onSwipeRight={() => {
+                console.log('swipe right')
+                if( swipeIdx > 1 ){ setSwipeIdx(swipeIdx - 1) }
+            }}
+            config={{
+                velocityThreshold: 0.1,
+                directionalOffsetThreshold: 40
+              }} 
+              style={homeStyles.content} onLayout={handleLayout}           
+        >
+        
             <View style={styles.diamondContainer}>
                 {
                     dimension !== null &&
@@ -52,7 +68,8 @@ const Swipe = () => {
 
                 <SwipeButtons swipeIdx={swipeIdx} />
             </View>
-        </View>
+        
+        </GestureRecognizer>
     )
 }
 
