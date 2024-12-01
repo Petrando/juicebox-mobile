@@ -90,14 +90,15 @@ const styles = StyleSheet.create({
     }, 
     tabNav: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'space-around',
         alignItems: 'center',
         paddingTop: 16.69,
         paddingBottom: 46.49,
         width: '100%'
     },
     tabItem: {
-        flex: 1,
+        borderRadius: 10,
+        padding: 8,
         display: 'flex',
         justifyContent: 'center', 
         alignItems: 'center'

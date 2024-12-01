@@ -5,7 +5,6 @@ import TopNav from '../components/pages/home/TopNav';
 import Button from '../components/Button';
 import { RadialGradient } from '../components/Icons';
 const MainLogo = require('../assets/images/MainLogo.png')
-//const LogoImage = Image.resolveAssetSource(MainLogo).uri;
 
 const Home = () => {
   const homeRef = useRef(null)
@@ -28,9 +27,7 @@ const Home = () => {
       { dimension !== null && <RadialGradient {...dimension} /> }
       <TopNav />
       <View style={styles.content}>
-        <View style={styles.diamond}>
-          <Image source={MainLogo} />
-        </View>
+        <DiamondLogo />
         <View style={styles.contentText}>
           <Text style={[styles.mainText, styles.textColor]}>
             Compare your thoughts on <Text style={styles.innerText}>technology</Text> with current industry opinions.
@@ -39,6 +36,27 @@ const Home = () => {
       </View>
       <Button />
     </SafeAreaView>    
+  )
+}
+
+const DiamondLogo = () => {
+  const [ dimension, setDimension ] = useState(null)
+
+  const handleLayout = (event) => {
+    const { width, height } = event.nativeEvent.layout;
+    setDimension({ width, height });
+  };
+
+  const logoHeight = dimension !== null?dimension.height * 0.84:0
+  const logoWidth = 0.94 * logoHeight
+  return (
+    <View style={styles.diamond} onLayout={handleLayout}>
+      {
+        dimension !== null &&
+          <Image source={MainLogo} style={{ width: logoWidth, height: logoHeight }}/>
+      }
+      
+    </View>
   )
 }
 
@@ -64,6 +82,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
+  mainLogo: {
+    height: '84%',    
+  },  
   contentText: {
     flex: 122,
     //backgroundColor: 'orange'
