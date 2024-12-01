@@ -33,14 +33,9 @@ const Home = () => {
       }
       {
         !hideButton &&
-          <Button onClick={()=>{
-              if(homeState === "welcome"){
-                setHomeState("swipe1")
-              }else if(atSwipe){                    
-                setHomeState("data-input")
-              }        
-            }}
+          <Button           
             homeState={homeState} 
+            setHomeState={setHomeState}
           />
       }
       
