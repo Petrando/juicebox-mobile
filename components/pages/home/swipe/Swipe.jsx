@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     text: {
-        //fontFamily: Bagoss TRIAL,
+        fontFamily: 'Bagoss',
         fontSize: 22,
         fontWeight: 400,
         lineHeight: 27.5,

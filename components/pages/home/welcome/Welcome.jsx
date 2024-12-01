@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     //paddingHorizontal: 22
   },
   mainText: {
-    //fontFamily: 'Bagoss TRIAL',
+    fontFamily: 'Bagoss',
     fontSize: 28,
     fontWeight: 400,
     lineHeight: 33.6,

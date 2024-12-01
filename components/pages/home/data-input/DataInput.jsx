@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
         paddingTop: 24
     },
     text: {
-        //fontFamily: Bagoss TRIAL,
+        fontFamily: 'Bagoss',
         fontSize: 19,
         fontWeight: 400,
         lineHeight: 22.8,
