@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import TopNav from '../components/pages/home/TopNav';
-import Button from '../components/Button';
+import Button from '../components/pages/home/Button';
 import Welcome from '../components/pages/home/welcome/Welcome';
 import Swipe from '../components/pages/home/swipe/Swipe';
 import DataInput from '../components/pages/home/data-input/DataInput';

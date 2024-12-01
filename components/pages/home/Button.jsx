@@ -1,6 +1,5 @@
 import React from 'react'
 import { TouchableOpacity, View, Text, StyleSheet } from 'react-native';
-import Welcome from './pages/home/welcome/Welcome';
 
 const Button = ({ homeState, setHomeState }) => {
     const atSwipe = homeState.startsWith("swipe")
