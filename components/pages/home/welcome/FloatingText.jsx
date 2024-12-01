@@ -1,9 +1,9 @@
 import React from 'react';
 import { Text, StyleSheet } from 'react-native'
 
-const FloatingText = ({ label, top, left}) => {
+const FloatingText = ({ label, numberOfLines = 1, ...props}) => {
     return (
-        <Text style={[styles.floatingText, {top, left}]}>
+        <Text style={[styles.floatingText, {...props}]} numberOfLines={numberOfLines}>
             {label}
         </Text>
     )
@@ -17,7 +17,8 @@ const styles = StyleSheet.create({
         lineHeight: 16.2,
         //letterSpacing: '0.02em'
         color: '#FAFAFA',
-        position: 'absolute'
+        position: 'absolute',
+        overflow: 'visible'
     }
 })
 
