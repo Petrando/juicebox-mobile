@@ -23,7 +23,7 @@ const Button = ({ homeState, setHomeState }) => {
                     if(homeState === "welcome"){
                       setHomeState("swipe1")
                     }else if(atSwipe){                    
-                      setHomeState("data-input")
+                      setHomeState("data-input-name")
                     }        
                   }}>
                 <Text style={[styles.text, buttonTextStyle]}>{buttonLabel}</Text>

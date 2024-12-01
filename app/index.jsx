@@ -22,7 +22,7 @@ const Home = () => {
   
   const atSwipe = homeState.startsWith("swipe")
 
-  const hideButton = homeState === "data-input" && name === "" && email === ""
+  const hideButton = homeState === "data-input-name" || homeState === "data-input-email"
   return (    
     <SafeAreaView style={styles.container} onLayout={handleLayout} ref={homeRef}>      
       { dimension !== null && <RadialGradient {...dimension} /> }
@@ -34,6 +34,7 @@ const Home = () => {
               <DataInput 
                 name={name} setName={setName}
                 email={email} setEmail={setEmail}
+                homeState={homeState} setHomeState={setHomeState}
               />
       }
       {

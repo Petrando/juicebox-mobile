@@ -9,7 +9,7 @@ const TopNav = ({ homeState, setHomeState }) => {
                 onPress={()=>{
                     if(homeState.startsWith("swipe")){
                         setHomeState("welcome")
-                    }else if(homeState === "data-input"){
+                    }else if(homeState.startsWith("data-input")){
                         setHomeState("swipe3")
                     }
                 }}

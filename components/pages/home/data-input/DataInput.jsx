@@ -4,32 +4,70 @@ const dataInputLogo = require('../../../../assets/images/dataInputLogo.png')
 import { ArrowTop } from '../../../Icons'
 import { styles as homeStyles } from '../styles'
 
-const DataInput = ({ name, setName, email, setEmail }) => {
+const DataInput = ({ name, setName, email, setEmail, homeState, setHomeState }) => {
     const nameLabel = 'Let’s start with the basics. Type in your first name.'
     const emailLabel = 'How should we contact you? Type in your email address.'
-    const completedLabel1 = 'Thanks, <Name>! Now, it’s time to get a reality check. '
+    const completedLabel1 = `Thanks, ${name}! Now, it’s time to get a reality check. `
     const completedLabel2 = 'This will take 2-3 minutes. '
+
+    const text1 = homeState === "data-input-name"?nameLabel:
+        homeState === "data-input-email"?emailLabel:
+            completedLabel1
     return (
         <View style={styles.container}>
             <View style={styles.content}>
                 <Image source={dataInputLogo} style={{ width: 29, height: 30.79 }} />
                 <Text style={styles.text}>
-                    {nameLabel}
+                    {text1}
                 </Text>
+                {
+                    homeState === "data-input-completed" &&
+                    <Text style={styles.text}>
+                        {completedLabel2}
+                    </Text>
+                }
             </View>
             <View style={{padding: 20}}>
-            <View style={styles.inputContainer}>
-                <TextInput 
-                    style={styles.input} 
-                    placeholder={
-                        name === ""?"First name":
-                            email === ""?"Set email":""
-                    }
-                />
-                <TouchableOpacity style={styles.arrowButton}>
-                    <ArrowTop />
-                </TouchableOpacity>
-            </View>
+            {
+                homeState !== "data-input-complete" &&
+                <View style={styles.inputContainer}>
+                    <TextInput 
+                        style={styles.input} 
+                        placeholder={
+                            name === ""?"First name":
+                                email === ""?"Set email":""
+                        }
+                        onChangeText={(e)=>{
+                            if(homeState === "data-input-name"){
+                                setName(e)
+                            }else if(homeState === "data-input-email"){
+                                setEmail(e)
+                            }
+                        }}
+                        value={
+                            homeState === "data-input-name"?name:email
+                        }
+                    />
+                    <TouchableOpacity 
+                        style={styles.arrowButton}
+                        disable={
+                            (homeState === "data-input-name" && name === "") ||
+                                (homeState === "data-input-email" && email === "")
+                        }
+                        onPress={()=>{
+                            if(homeState === "data-input-name" && name !== ""){
+                                setHomeState("data-input-email")
+                            }else if(homeState === "data-input-email" && email !== ""){
+                                setHomeState("data-input-complete")
+                            }
+                        }}
+                    
+                    >
+                        <ArrowTop />
+                    </TouchableOpacity>
+                </View>
+            }
+            
             </View>
         </View>
     )
@@ -76,7 +114,8 @@ const styles = StyleSheet.create({
     input: {
         flex: 1,
         placeholderTextColor: '#3D3D3D',
-        paddingHorizontal: 12
+        paddingHorizontal: 12,
+        color: '#FAFAFA'
     },
     arrowButton: {
         width: 31,
