@@ -5,6 +5,7 @@ import TopNav from '../components/pages/home/TopNav';
 import Button from '../components/Button';
 import Welcome from '../components/pages/home/welcome/Welcome';
 import Swipe from '../components/pages/home/swipe/Swipe';
+import DataInput from '../components/pages/home/data-input/DataInput';
 import { RadialGradient } from '../components/Icons';
 
 const Home = () => {
@@ -29,7 +30,11 @@ const Home = () => {
       {
         homeState === "welcome"?
           <Welcome /> : atSwipe?
-            <Swipe homeState={homeState} setHomeState={setHomeState} />:<></>
+            <Swipe homeState={homeState} setHomeState={setHomeState} />:
+              <DataInput 
+                name={name} setName={setName}
+                email={email} setEmail={setEmail}
+              />
       }
       {
         !hideButton &&

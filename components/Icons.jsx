@@ -107,6 +107,12 @@ export const Reload = (props) => (
     </Svg>
 )
 
+export const ArrowTop = (props) => (
+    <Svg width={12} height={15} fill="none" xmlns="http://www.w3.org/2000/svg">
+        <Path d="M0.75 6.5L6 1.25M6 1.25L11.25 6.5M6 1.25L6 14.75" stroke="white" />
+    </Svg>
+)
+
 export const JuiceboxTitle = (props) => (
     <Svg width={124} height={30} fill='none' xmlns='http://www.w3.org/2000/svg' {...props}>
         <Path d='M21.121 17.0265C21.121 18.8099 19.982 19.3612 18.8755 19.3612C17.8016 19.3612 16.5975 18.8099 16.5975 17.0265V8.64966H11.3799V18.129C11.3799 21.3068 13.9507 24.1387 18.8755 24.1387C23.8329 24.1387 26.3386 21.3176 26.3386 18.129V8.64966H21.121V17.0265Z' fill='#FAFAFA'/>

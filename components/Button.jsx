@@ -5,6 +5,7 @@ const Button = ({ homeState, setHomeState }) => {
     const atSwipe = homeState.startsWith("swipe")
     const buttonLabel = homeState === "welcome"?"Get a reality check":
         homeState === "swipe3"?"Continue":"Get started"
+
     return (
         <View style={styles.container}>
             <TouchableOpacity style={styles.button} 
@@ -43,7 +44,6 @@ const styles = StyleSheet.create({
         color: '#0C0D10'
     }
 })
-
 
 export default Button
 

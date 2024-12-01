@@ -44,7 +44,7 @@ const Swipe = ({homeState, setHomeState}) => {
                 velocityThreshold: 0.1,
                 directionalOffsetThreshold: 40
               }} 
-              style={homeStyles.content} onLayout={handleLayout}           
+            style={homeStyles.content} onLayout={handleLayout}           
         >
         
             <View style={styles.diamondContainer}>
