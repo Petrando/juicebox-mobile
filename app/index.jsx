@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useMediaQuery } from 'react-responsive'
 import TopNav from '../components/pages/home/TopNav';
 import Button from '../components/pages/home/Button';
 import Welcome from '../components/pages/home/welcome/Welcome';
@@ -14,6 +15,20 @@ const Home = () => {
   const [ dimension, setDimension ] = useState(null)
   const [ name, setName ] = useState("")  
   const [ email, setEmail ] = useState("")
+
+  const isDesktopOrLaptop = useMediaQuery({
+    query: '(min-width: 1224px)'
+  })
+  const isBigScreen = useMediaQuery({ query: '(min-width: 1824px)' })
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
+  const isPortrait = useMediaQuery({ query: '(orientation: portrait)' })
+  const isRetina = useMediaQuery({ query: '(min-resolution: 2dppx)' })
+
+  console.log('isDesktopOrLaptop : ', isDesktopOrLaptop)
+  console.log('isBigScreen : ', isBigScreen)
+  console.log('isTabletOrMobile : ', isTabletOrMobile)
+  console.log('isPortrait : ', isPortrait)
+  console.log('isRetina : ', isRetina)
 
   const handleLayout = (event) => {
     const { width, height } = event.nativeEvent.layout;

@@ -41,7 +41,8 @@
     "react-native-svg": "^15.9.0",
     "react-native-swipe-gestures": "^1.0.5",
     "react-native-web": "~0.19.13",
-    "react-native-webview": "13.12.2"
+    "react-native-webview": "13.12.2",
+    "react-responsive": "^10.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
