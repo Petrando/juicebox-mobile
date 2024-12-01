@@ -13,7 +13,7 @@ function TabBar({ state, descriptors, navigation }) {
             <View style={styles.inputContainer}>
                 <View style={styles.inputWithIcon}>
                     <DoubleA />
-                        <TextInput style={styles.textInput} value={linkTo} />
+                    <TextInput style={styles.textInput} value={linkTo} />
                     <Reload />
                 </View>
             </View>
@@ -23,7 +23,7 @@ function TabBar({ state, descriptors, navigation }) {
                     const isFocused = icon === active;
 
                     const onPress = () => {            
-                    setActive(icon)
+                        setActive(icon)
                     };
 
                     const onLongPress = () => {                
@@ -52,15 +52,17 @@ const styles = StyleSheet.create({
         position: 'absolute', 
         bottom: 0,        
         backgroundColor: '#3D3D3D',
-        width: '100dvw',
+        width: '100%',
         height: 140
     },
     inputContainer: {
         width: "100%",
-        paddingHorizontal: 30,
+        paddingLeft: 30,
+        paddingRight: 30,
         display: "flex",         
         justifyContent: "center", 
-        alignItems: "center"
+        alignItems: "center",        
+        height: 44
     },
     inputWithIcon:{
         width: "100%",
@@ -72,8 +74,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(255, 255, 255, 0.2)',
         borderRadius: 12,
         overflow: "hidden",
-        paddingLeft: 16.2,
-        paddingRight: 13.32
+        paddingLeft: 26.2,
+        paddingRight: 23.32
     }, 
     textInput: {
         width: "100%",
@@ -81,14 +83,10 @@ const styles = StyleSheet.create({
         borderRadius: 12,
         fontWeight: 400,
         fontSize: 16,
-        //backgroundColor: 'rgba(255, 255, 255, 0.2)', font-family: SF Pro Text;
-        //fontFamily: "SF Pro Text",
         lineHeight: 19.09,
-        letterSpacing: "-0.028em",
+        //letterSpacing: "-0.028em",
         textAlign: "center",
-        color: "#FAFAFA"
-       
-        
+        color: "#FAFAFA"           
     }, 
     tabNav: {
         flexDirection: 'row',
@@ -96,7 +94,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingTop: 16.69,
         paddingBottom: 46.49,
-        width: '100%',
+        width: '100%'
     },
     tabItem: {
         flex: 1,
