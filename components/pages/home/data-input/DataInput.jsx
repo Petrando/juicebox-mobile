@@ -11,10 +11,13 @@ const DataInput = ({ name, setName, email, setEmail }) => {
     const completedLabel2 = 'This will take 2-3 minutes. '
     return (
         <View style={styles.container}>
-            <Image source={dataInputLogo} style={{ width: 29, height: 30.79 }} />
-            <Text style={styles.text}>
-                {nameLabel}
-            </Text>
+            <View style={styles.content}>
+                <Image source={dataInputLogo} style={{ width: 29, height: 30.79 }} />
+                <Text style={styles.text}>
+                    {nameLabel}
+                </Text>
+            </View>
+            <View style={{padding: 20}}>
             <View style={styles.inputContainer}>
                 <TextInput 
                     style={styles.input} 
@@ -27,12 +30,18 @@ const DataInput = ({ name, setName, email, setEmail }) => {
                     <ArrowTop />
                 </TouchableOpacity>
             </View>
+            </View>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
+        display: 'flex',
+        flexDirection: 'column'        
+    },
+    content:{
         flex: 1,
         display: 'flex',
         flexDirection: 'column',
@@ -51,7 +60,7 @@ const styles = StyleSheet.create({
         marginTop: 32
     },
     inputContainer: {
-        marginTop: 20,
+        //marginTop: 20,
         width: 350,
         height: 60,
         //padding: 0px 12px 0px 12px;
