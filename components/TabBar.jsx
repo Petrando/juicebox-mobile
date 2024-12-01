@@ -13,7 +13,7 @@ function TabBar({ state, descriptors, navigation }) {
             <View style={styles.inputContainer}>
                 <View style={styles.inputWithIcon}>
                     <DoubleA />
-                    <TextInput style={styles.textInput} value={linkTo} />
+                    <TextInput style={styles.textInput} value={linkTo} editable={false} />
                     <Reload />
                 </View>
             </View>

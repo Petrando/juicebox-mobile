@@ -12,7 +12,7 @@ const DiamondLogo = () => {
     };  
     
     const logoHeight = dimension !== null?dimension.height * 0.84:0
-    const logoWidth = 0.94 * logoHeight
+    const logoWidth = 0.94 * logoHeight    
 
     const logoFigmaWidth = 274
     const logoFigmaHeight = 290
@@ -56,7 +56,7 @@ const DiamondLogo = () => {
 
 const styles = StyleSheet.create({
     diamond: {
-        flex: 346,
+        flex: 325,
         position: 'relative',
         display: 'flex',
         justifyContent: 'center',

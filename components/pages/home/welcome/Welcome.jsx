@@ -1,12 +1,13 @@
 import React, { useState, useRef, useLayoutEffect } from 'react'
-import { StyleSheet, View, Image, Text } from 'react-native'
+import { StyleSheet, View, Text } from 'react-native'
 import DiamondLogo from './DiamondLogo';
+import { styles as homeStyles } from '../styles';
 
 const Welcome = () => {      
   
   return (    
     <>            
-      <View style={styles.content}>
+      <View style={homeStyles.content}>
         <DiamondLogo />
         <View style={styles.contentText}>
           <Text style={[styles.mainText, styles.textColor]}>
@@ -18,15 +19,9 @@ const Welcome = () => {
   )
 }
 
-const styles = StyleSheet.create({ 
-  content: {
-    flex: 1,
-    display: 'flex',
-    flexDirection: 'column'
-  },    
+const styles = StyleSheet.create({    
   contentText: {
-    flex: 122,
-    //backgroundColor: 'orange'
+    flex: 150,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center'

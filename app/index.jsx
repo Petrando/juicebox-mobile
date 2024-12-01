@@ -1,12 +1,14 @@
 import React, { useState, useRef } from 'react'
-import { StyleSheet } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import TopNav from '../components/pages/home/TopNav';
 import Button from '../components/Button';
 import Welcome from '../components/pages/home/welcome/Welcome';
+import Swipe from '../components/pages/home/swipe/Swipe';
 import { RadialGradient } from '../components/Icons';
 
 const Home = () => {
+  const [homeState, setHomeState] = useState("welcome")
   const homeRef = useRef(null)
   const [ dimension, setDimension ] = useState(null)  
 
@@ -19,8 +21,11 @@ const Home = () => {
     <SafeAreaView style={styles.container} onLayout={handleLayout} ref={homeRef}>      
       { dimension !== null && <RadialGradient {...dimension} /> }
       <TopNav />
-      <Welcome />
-      <Button />
+      {
+        homeState === "welcome"?
+          <Welcome /> : homeState === "swipe"?<Swipe />:<></>
+      }
+      <Button onClick={()=>{setHomeState("swipe")}} />
     </SafeAreaView>    
   )
 }
@@ -33,7 +38,8 @@ const styles = StyleSheet.create({
     marginBottom: 140,
     justifySelf: 'end',
     position: 'relative'
-  }
+  },
+  
 })
 
 export default Home
