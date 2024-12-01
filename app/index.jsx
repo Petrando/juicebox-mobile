@@ -10,31 +10,40 @@ import { RadialGradient } from '../components/Icons';
 const Home = () => {
   const [homeState, setHomeState] = useState("welcome")
   const homeRef = useRef(null)
-  const [ dimension, setDimension ] = useState(null)  
+  const [ dimension, setDimension ] = useState(null)
+  const [ name, setName ] = useState("")  
+  const [ email, setEmail ] = useState("")
 
   const handleLayout = (event) => {
     const { width, height } = event.nativeEvent.layout;
     setDimension({ width, height });
   };
   
+  const atSwipe = homeState.startsWith("swipe")
+
+  const hideButton = homeState === "data-input" && name === "" && email === ""
   return (    
     <SafeAreaView style={styles.container} onLayout={handleLayout} ref={homeRef}>      
       { dimension !== null && <RadialGradient {...dimension} /> }
-      <TopNav />
+      <TopNav homeState={homeState} setHomeState={setHomeState} />
       {
         homeState === "welcome"?
-          <Welcome /> : homeState.startsWith("swipe")?
+          <Welcome /> : atSwipe?
             <Swipe homeState={homeState} setHomeState={setHomeState} />:<></>
       }
-      <Button onClick={()=>{
-        if(homeState === "welcome"){
-          setHomeState("swipe1")
-        }else if(homeState.startsWith("swipe")){
-          //setHomeState("data-input")
-        }
-        
-      }} 
-      />
+      {
+        !hideButton &&
+          <Button onClick={()=>{
+              if(homeState === "welcome"){
+                setHomeState("swipe1")
+              }else if(atSwipe){                    
+                setHomeState("data-input")
+              }        
+            }}
+            homeState={homeState} 
+          />
+      }
+      
     </SafeAreaView>    
   )
 }
