@@ -9,7 +9,7 @@ SplashScreen.preventAutoHideAsync();
 
 const _layout = () => {
     const [loaded, error] = useFonts({
-        'Bagoss': require('../assets/fonts/bagoss-condensed-trial-7.otf'),
+        'Bagoss': require('../assets/fonts/BagossTRIALVF.ttf'),
         //'Sohne': require('../assets/fonts/TestSohneBreit-Buch.otf'),
         //'SF Pro': require('../assets/fonts/SFPRODISPLAYREGULAR.OTF')
     });
