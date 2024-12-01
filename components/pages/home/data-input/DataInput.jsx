@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     },
     inputContainer: {
         //marginTop: 20,
-        width: 350,
+        width: "100%",
         height: 60,
         //padding: 0px 12px 0px 12px;
         borderRadius: 18,
