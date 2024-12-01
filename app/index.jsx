@@ -23,9 +23,18 @@ const Home = () => {
       <TopNav />
       {
         homeState === "welcome"?
-          <Welcome /> : homeState === "swipe"?<Swipe />:<></>
+          <Welcome /> : homeState.startsWith("swipe")?
+            <Swipe homeState={homeState} setHomeState={setHomeState} />:<></>
       }
-      <Button onClick={()=>{setHomeState("swipe")}} />
+      <Button onClick={()=>{
+        if(homeState === "welcome"){
+          setHomeState("swipe1")
+        }else if(homeState.startsWith("swipe")){
+          //setHomeState("data-input")
+        }
+        
+      }} 
+      />
     </SafeAreaView>    
   )
 }

@@ -5,12 +5,10 @@ const swipeLogo = require('../../../../assets/images/SwipeLogo.png')
 import SwipeButtons from './SwipeButtons'
 import { styles as homeStyles } from '../styles'
 
-const Swipe = () => {
+const Swipe = ({homeState, setHomeState}) => {
     const [ dimension, setDimension ] = useState(null)
-    const [swipeIdx, setSwipeIdx] = useState(1)
+    const swipeIdx = parseInt(homeState.charAt(5))
   
-    
-
     const handleLayout = (event) => {
         const { width, height } = event.nativeEvent.layout;
         setDimension({ width, height });
@@ -37,12 +35,10 @@ const Swipe = () => {
     return(
         <GestureRecognizer           
             onSwipeLeft={() => {
-                console.log('swipe left')
-                if( swipeIdx < 3 ){ setSwipeIdx(swipeIdx + 1) }
+                if( swipeIdx < 3 ){ setHomeState("swipe" + (swipeIdx + 1)) }
             }}
             onSwipeRight={() => {
-                console.log('swipe right')
-                if( swipeIdx > 1 ){ setSwipeIdx(swipeIdx - 1) }
+                if( swipeIdx > 1 ){ setHomeState("swipe" + (swipeIdx - 1)) }
             }}
             config={{
                 velocityThreshold: 0.1,
